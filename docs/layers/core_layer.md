@@ -98,6 +98,31 @@ keras.layers.core.Dropout(p)
 * [<font color='FF0000'>Dropout: A Simple Way to Prevent Neural Networks from Overfitting</font>](http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf)
 
 ***
+## SpatialDropout1D层
+
+```python
+keras.layers.core.SpatialDropout1D(p)
+```
+SpatialDropout1D与Dropout的作用类似，但它断开的是整个1D特征图，而不是单个神经元。如果一张特征图的相邻像素之间有很强的相关性（通常发生在低层的卷积层中），那么普通的dropout无法正则化其输出，否则就会导致明显的学习率下降。这种情况下，SpatialDropout1D能够帮助提高特征图之间的独立性，应该用其取代普通的Dropout
+
+### 参数
+
+* p：0~1的浮点数，控制需要断开的链接的比例
+
+### 输入shape
+
+输入形如（samples,timesteps，channels）的3D张量
+
+### 输出shape
+
+与输入相同
+
+### 参考文献
+
+* [<font color='FF0000'>Efficient Object Localization Using Convolutional Networks</font>](https://arxiv.org/pdf/1411.4280.pdf)
+
+
+***
 ## SpatialDropout2D层
 
 ```python
